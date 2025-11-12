@@ -1,94 +1,85 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2865
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;}
-{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red22\green22\blue21;}
-{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\cssrgb\c11373\c11373\c10588;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+<!DOCTYPE html>\
+<html>
+<head>
+    <meta http-equiv="content-type"
+        content="text/html; charset=utf-8"/>
+    <title>Sicherheitsspiel</title>
+    <style>
+     #spielFeld {
+       background: url('GameBackground.jpg');
+       background-size: cover;
+       border: 1px solid black;
+       height: 350px;
+       width: 650px;
+    \}
+     .person {
+       background: url('Guest.jpg');
+       background-size: cover;
+       width: 120px;
+       height: 120px;
+       padding: 10px;
+       margin: 10px;
+       float: left;
+       display: none;
+    }
+     .dieb {
+       background: url('Thief.jpg');
+       background-size: cover;
+     }
+     .versteckt {
+       display: none;
+    }
+     .sichtbar {
+       display: block;
+    }
+   </style>
+</head>
 
-\f0\fs36 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 <!DOCTYPE html>\
-<html>\
-<head>\
-    <meta http-equiv="content-type" \
-        content="text/html; charset=utf-8"/>\
-    <title>Sicherheitsspiel</title>\
-    <style>\
-     #spielFeld \{\
-       background: url('GameBackground.jpg');\
-       background-size: cover;\
-       border: 1px solid black;\
-       height: 350px;\
-       width: 650px;\
-    \}\
-     .person \{\
-       background: url('Guest.jpg');\
-       background-size: cover;\
-       width: 120px;\
-       height: 120px;\
-       padding: 10px;\
-       margin: 10px;\
-       float: left;\
-       display: none;\
-    \}\
-     .dieb \{\
-       background: url('Thief.jpg');\
-       background-size: cover;\
-    \}\
-     .versteckt \{\
-       display: none;\
-    \}\
-     .sichtbar \{\
-       display: block;\
-    \}\
-   </style>\
-</head>\
-\
-<body>\
-   <input type="button" value="Spielen" onclick="startSpiel();"/>\
-   <div id="spielFeld">\
-     <div class="person">1</div>\
-     <div class="person">2</div>\
-     <div class="person">3</div>\
-     <div class="person">4</div>\
-     <div class="person">5</div>\
-     <div class="person">6</div>\
-   </div>\
-   <script>\
-     function startSpiel() \{\
-        spielSchleife();\
-     \}\
-     var z\'e4hler = 0;\
-     var personenSichtbar = false;\
-     var punktestand = 0;\
-     function spielSchleife() \{\
-       personenSichtbar = !personenSichtbar;\
-       erstellePersonen();\
-       z\'e4hler++;\
-       if(z\'e4hler < 12) \{\
-           setTimeout(spielSchleife, personenSichtbar ? 1000 : 3000);\
-       \}\
-       else \{\
-         alert("Deine Punkte: " + punktestand);\
-       \}      \
-     \}\
-     function erstellePersonen() \{\
-       var spielFeld = document.getElementById("spielFeld");\
-       var zuSetzendeKlasse = personenSichtbar ? "person sichtbar" : "person versteckt";\
-       for(var index = 0; index < 6; index ++) \{\
-         spielFeld.children[index].className = zuSetzendeKlasse;\
-         spielFeld.children[index].innerHTML = "";\
-         spielFeld.children[index].onclick = function()\{ \
-               punktestand += -2; \};  \
-       \}\
-       var zufallszahl = Math.floor(Math.random() * 6);\
-       spielFeld.children[zufallszahl].innerHTML = "";\
-       spielFeld.children[zufallszahl].onclick = function() \{ \
-               punktestand++; \};\
-       spielFeld.children[zufallszahl].className = zuSetzendeKlasse + " dieb";\
-    \}\
-\
-   </script>\
-\
-</body>\
-</html>}
+<body>
+   <input type="button" value="Spielen" onclick="startSpiel();"/>
+   <div id="spielFeld">
+     <div class="person">1</div>
+     <div class="person">2</div>
+     <div class="person">3</div>
+     <div class="person">4</div>
+     <div class="person">5</div>
+     <div class="person">6</div>
+   </div>
+   <script>
+     function startSpiel() {
+        spielSchleife();
+     }
+     var ze4hler = 0;
+     var personenSichtbar = false;
+     var punktestand = 0;
+     function spielSchleife() {
+       personenSichtbar = !personenSichtbar;
+       erstellePersonen();
+       ze4hler++;
+       if(ze4hler < 12) {
+           setTimeout(spielSchleife, personenSichtbar ? 1000 : 3000);
+       }
+       else {
+         alert("Deine Punkte: " + punktestand);
+       }      
+     }
+     function erstellePersonen() {
+       var spielFeld = document.getElementById("spielFeld");
+       var zuSetzendeKlasse = personenSichtbar ? "person sichtbar" : "person versteckt";
+       for(var index = 0; index < 6; index ++) {
+         spielFeld.children[index].className = zuSetzendeKlasse;
+         spielFeld.children[index].innerHTML = "";
+         spielFeld.children[index].onclick = function(){ 
+               punktestand += -2; };  
+       }
+       var zufallszahl = Math.floor(Math.random() * 6);
+       spielFeld.children[zufallszahl].innerHTML = "";
+       spielFeld.children[zufallszahl].onclick = function() { 
+               punktestand++; };
+       spielFeld.children[zufallszahl].className = zuSetzendeKlasse + " dieb";
+    }
+
+   </script>
+
+</body>
+</html>
